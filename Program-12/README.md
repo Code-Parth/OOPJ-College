@@ -4,6 +4,22 @@
 
 
 ```JAVA
+import java.util.Random;
+
+public class RandomIntegers {
+    public static void main(String[] args) {
+        Random rand = new Random(1000);
+
+        for (int i = 1; i <= 100; i++) {
+            int num = rand.nextInt(49) + 1;
+            System.out.print(num + " ");
+
+            if (i % 10 == 0) {
+                System.out.println();
+            }
+        }
+    }
+}
 
 ```
 
