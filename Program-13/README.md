@@ -51,5 +51,6 @@ public class Calculator {
 ```
 
 ```
-
+Enter an expression: 3+4
+Result: 7.0
 ```
