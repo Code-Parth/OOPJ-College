@@ -76,5 +76,10 @@ class Circle {
 ```
 
 ```
-
+Loan amount: 1000.0,
+interest rate: 5.0,
+term: 12Tue Jun 27 14:17:21 GMT 2023
+Hello, World!
+Circle radius: 5.0,
+area: 78.53981633974483
 ```
