@@ -42,5 +42,4 @@ public class BinaryConverter {
 ```
 Binary: 1101
 Decimal: 13
-
 ```
