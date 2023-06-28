@@ -31,5 +31,6 @@ public class MinimumElementInArray {
 ```
 
 ```
+Minimum no is = 1
 
 ```
