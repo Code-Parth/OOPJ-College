@@ -30,5 +30,12 @@ public class SmallestInteger {
 ```
 
 ```
+How many elements you want in array?
+4
+-1
+2
+-70
+20
+Smallest element in the array is: -70
 
 ```
