@@ -3,48 +3,28 @@
 ## Write a generic method that returns the minimum elements in a  two dimensional array. 
 
 ```JAVA
-import java.util.Arrays;
-
 public class MinimumElementInArray {
-
-    public static <T extends Comparable<T>> T findMinimum(T[][] array) {
-        if (array == null || array.length == 0 || array[0].length == 0) {
-            throw new IllegalArgumentException("Invalid array");
+    public static void main(String[] args) {
+        Integer list[][] = new Integer[10][10];
+        int value = 0;
+        for (int i = 0; i < list.length; i++) {
+            for (int j = 0; j < list[i].length; j++) {
+                list[i][j] = ++value;
+            }
         }
+        System.out.println("Minimum no is = " + min(list));
+    }
 
-        T min = array[0][0];
-        for (T[] row : array) {
-            for (T element : row) {
+    public static <E extends Comparable<E>> E min(E list[][]) {
+        E min = list[0][0];
+        for (E[] elements : list) {
+            for (E element : elements) {
                 if (element.compareTo(min) < 0) {
                     min = element;
                 }
             }
         }
-
         return min;
-    }
-
-    public static void main(String[] args) {
-        Integer[][] intArray = {
-                {3, 5, 1},
-                {7, 2, 9},
-                {4, 6, 8}
-        };
-        System.out.println("Minimum element in intArray: " + findMinimum(intArray));
-
-        Double[][] doubleArray = {
-                {3.5, 2.1, 4.7},
-                {1.2, 5.3, 0.8},
-                {6.9, 3.0, 2.7}
-        };
-        System.out.println("Minimum element in doubleArray: " + findMinimum(doubleArray));
-
-        String[][] stringArray = {
-                {"apple", "banana", "orange"},
-                {"pear", "grape", "kiwi"},
-                {"cherry", "strawberry", "pineapple"}
-        };
-        System.out.println("Minimum element in stringArray: " + findMinimum(stringArray));
     }
 }
 
