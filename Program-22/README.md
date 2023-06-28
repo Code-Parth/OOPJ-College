@@ -6,46 +6,24 @@
 import java.util.Scanner;
 
 public class SmallestInteger {
-
-    public static void main(String[] args) {
-        // Create an array of integers
-        int[] array = {5, 3, 9, 1, 7};
-
-        // Find the smallest integer using the recursive method
-        int smallest = findSmallest(array, array.length);
-
-        // Display the smallest integer
-        System.out.println("The smallest integer in the array is: " + smallest);
-
-        // Prompt the user for an integer
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter an integer: ");
-        int input = scanner.nextInt();
-
-        // Calculate and display the product
-        int product = calculateProduct(input);
-        System.out.println("The product is: " + product);
+    public static int findMinimum(int A[], int n) {
+        // if size = 0 means whole array has been traversed
+        if (n == 1)
+            return A[0];
+        return Math.min(A[n - 1], findMinimum(A, n - 1));
     }
 
-    // Recursive method to find the smallest integer in an array
-    public static int findSmallest(int[] array, int length) {
-        // Base case: If the length is 1, return the only element
-        if (length == 1) {
-            return array[0];
+    // Driver code
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("How many elements you want in array?");
+        int n = sc.nextInt();
+        int A[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            A[i] = sc.nextInt();
         }
-        // Recursive case: Find the smallest integer in the subarray
-        int subArraySmallest = findSmallest(array, length - 1);
-        // Compare the smallest integer in the subarray with the current element
-        if (array[length - 1] < subArraySmallest) {
-            return array[length - 1];
-        } else {
-            return subArraySmallest;
-        }
-    }
-
-    // Method to calculate the product of a number with itself
-    public static int calculateProduct(int number) {
-        return number * number;
+        // Function calling
+        System.out.println("Smallest element in the array is: " + findMinimum(A, n));
     }
 }
 
