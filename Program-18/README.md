@@ -5,72 +5,52 @@
 ```JAVA
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.layout.Pane;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 
 public class CircleMovement extends Application {
-
-    private static final int CIRCLE_RADIUS = 50;
-    private static final int CIRCLE_SPEED = 10;
-
-    private Circle circle;
-
-    @Override
     public void start(Stage primaryStage) {
-        circle = createCircle();
+        Pane pane = new Pane();
+        pane.setPadding(new Insets(30, 30, 30, 30));
+        Circle circle = new Circle(30, 30, 30);
+        pane.getChildren().add(circle);
+        pane.setOnKeyPressed(e -> {
 
-        Pane root = new Pane(circle);
-        Scene scene = new Scene(root, 400, 400);
-
-        scene.setOnKeyPressed(e -> handleKeyPress(e.getCode()));
-        scene.setOnKeyReleased(e -> handleKeyRelease(e.getCode()));
-
-        primaryStage.setTitle("Circle Movement");
+            switch (e.getCode()) {
+                case UP:
+                    circle.setCenterY(
+                            circle.getCenterY() > circle.getRadius() ? circle.getCenterY() - 15 : circle.getCenterY());
+                    break;
+                case DOWN:
+                    circle.setCenterY(
+                            circle.getCenterY() < pane.getHeight() - circle.getRadius() ? circle.getCenterY() + 15
+                                    : circle.getCenterY());
+                    break;
+                case LEFT:
+                    circle.setCenterX(
+                            circle.getCenterX() > circle.getRadius() ? circle.getCenterX() - 15 : circle.getCenterX());
+                    break;
+                case RIGHT:
+                    circle.setCenterX(
+                            circle.getCenterX() < pane.getWidth() - circle.getRadius() ? circle.getCenterX() + 15
+                                    : circle.getCenterX());
+            }
+        });
+        Scene scene = new Scene(pane, 200, 200);
+        primaryStage.setTitle("p52");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    private Circle createCircle() {
-        Circle circle = new Circle(CIRCLE_RADIUS);
-        circle.setFill(Color.BLUE);
-        circle.setCenterX(200);
-        circle.setCenterY(200);
-        return circle;
-    }
-
-    private void handleKeyPress(KeyCode keyCode) {
-        switch (keyCode) {
-            case UP:
-                circle.setCenterY(circle.getCenterY() - CIRCLE_SPEED);
-                break;
-            case DOWN:
-                circle.setCenterY(circle.getCenterY() + CIRCLE_SPEED);
-                break;
-            case LEFT:
-                circle.setCenterX(circle.getCenterX() - CIRCLE_SPEED);
-                break;
-            case RIGHT:
-                circle.setCenterX(circle.getCenterX() + CIRCLE_SPEED);
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void handleKeyRelease(KeyCode keyCode) {
-        // Add any additional key release handling here
-    }
-
-    public static void main(String[] args) {
-        launch(args);
+        pane.requestFocus();
     }
 }
 
 ```
 
-```
-
-```
+|||
+|--------|-------|
+| Actual | Right Arrow |
+| ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/4a07c162-eada-4c6c-b85b-2b9196761281) | ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/91dd7207-b3d6-452c-ab13-aeaeaa765458) |
+| Down Arrow | Left Arrow |
+| ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/3e1cceac-ea2c-43d2-bf6b-140c808c7afa) | ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/f77a4b0b-bddd-4f23-9be9-35b2a5359a9a) |
