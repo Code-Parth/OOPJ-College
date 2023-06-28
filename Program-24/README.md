@@ -5,37 +5,28 @@
 ```JAVA
 import java.util.PriorityQueue;
 
-public class MYPriorityQueue<T> extends PriorityQueue<T> implements Cloneable {
-  
-  @Override
-  public MYPriorityQueue<T> clone() {
-    MYPriorityQueue<T> clonedQueue = new MYPriorityQueue<>();
-    clonedQueue.addAll(this);
-    return clonedQueue;
-  }
-  
-  // Add other methods or overrides as needed
-  
-  public static void main(String[] args) {
-    MYPriorityQueue<Integer> originalQueue = new MYPriorityQueue<>();
-    originalQueue.add(5);
-    originalQueue.add(2);
-    originalQueue.add(8);
-    
-    // Clone the original priority queue
-    MYPriorityQueue<Integer> clonedQueue = originalQueue.clone();
-    
-    // Test the cloned queue
-    System.out.println("Original Queue: " + originalQueue);      // Output: Original Queue: [2, 5, 8]
-    System.out.println("Cloned Queue: " + clonedQueue);          // Output: Cloned Queue: [2, 5, 8]
-    
-    // Modify the original queue
-    originalQueue.add(10);
-    
-    // Test the modified original queue and cloned queue
-    System.out.println("Original Queue (after modification): " + originalQueue);   // Output: Original Queue (after modification): [2, 5, 8, 10]
-    System.out.println("Cloned Queue (should remain unchanged): " + clonedQueue);  // Output: Cloned Queue (should remain unchanged): [2, 5, 8]
-  }
+public class MYPriorityQueue {
+    public static void main(String[] args) {
+        MyPriorityQueue<String> queue = new MyPriorityQueue<>();
+        queue.offer("1");
+        queue.offer("2");
+        queue.offer("3");
+        MyPriorityQueue<String> queue1 = null;
+        try {
+            queue1 = (MyPriorityQueue<String>) (queue.clone());
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        System.out.print(queue1);
+    }
+
+    static class MyPriorityQueue<E> extends PriorityQueue<E> implements Cloneable {
+        public Object clone() throws CloneNotSupportedException {
+            MyPriorityQueue<E> clone = new MyPriorityQueue<>();
+            this.forEach(clone::offer);
+            return clone;
+        }
+    }
 }
 
 ```
