@@ -82,7 +82,11 @@ public class MessageApp extends Application {
 }
 
 ```
-
-```
-
-```
+||
+|--------|
+| Actual |
+| ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/8776bcff-cea5-46da-ac19-44870fbb2a6d) |
+| Left and Black Text |
+| ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/3b7cd840-42d6-40f9-b2af-c1273b80689f) |
+| Right and Black Text |
+| ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/2f1130b0-34c6-4107-80c3-c64a38bc50b9) |
