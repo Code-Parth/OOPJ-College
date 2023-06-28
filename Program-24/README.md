@@ -32,5 +32,5 @@ public class MYPriorityQueue {
 ```
 
 ```
-
+[1, 2, 3]
 ```
