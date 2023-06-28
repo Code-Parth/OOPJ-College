@@ -46,6 +46,6 @@ public class CircleColorChange extends Application {
 
 ```
 
-```
-
-```
+| Actual | OnPress(red) | OnRelease(Blue) |
+|----|----|----|
+| ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/e903e680-eb95-4209-84ab-b6452a30fca9) | ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/9eaab8e7-233f-4e24-a851-08374a099ea8) | ![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/3762f766-63bf-402b-aac3-0edd430e3961) |
