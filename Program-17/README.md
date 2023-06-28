@@ -4,66 +4,67 @@
 
 ```JAVA
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.Random;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class TicTacToeBoard extends Application {
-    private static final int BOARD_SIZE = 3;
-    private static final String[] CELL_VALUES = {"X", "O", ""};
-
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Tic-Tac-Toe Board");
-
-        // Create a random generator
-        Random random = new Random();
-
-        // Create a grid pane to hold the cells
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Tic-Tac-Toe");
         GridPane gridPane = new GridPane();
-        gridPane.setAlignment(Pos.CENTER);
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
-
-        // Populate the cells with random values
-        for (int row = 0; row < BOARD_SIZE; row++) {
-            for (int col = 0; col < BOARD_SIZE; col++) {
-                // Get a random cell value
-                String cellValue = CELL_VALUES[random.nextInt(CELL_VALUES.length)];
-
-                // Create an ImageView with the appropriate image
-                ImageView imageView = new ImageView();
-                if (cellValue.equals("X")) {
-                    imageView.setImage(new Image("X.gif"));
-                } else if (cellValue.equals("O")) {
-                    imageView.setImage(new Image("O.gif"));
-                }
-
-                // Add the ImageView to the grid pane
-                gridPane.add(imageView, col, row);
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int n = (int) (Math.random() * 3);
+                if (n == 0)
+                    gridPane.add(createX(), i, j);
+                else if (n == 1)
+                    gridPane.add(createO(), i, j);
+                else
+                    continue;
             }
         }
-
-        // Create a scene with the grid pane
-        Scene scene = new Scene(gridPane, 300, 300);
-
-        // Set the scene on the primary stage and show it
-        primaryStage.setScene(scene);
+        Scene primaryScene = new Scene(gridPane, 300, 300);
+        primaryStage.setScene(primaryScene);
         primaryStage.show();
     }
 
+    public VBox createX() throws FileNotFoundException {
+        // put the address of cross gif.
+        Image imageX = new Image(new FileInputStream("D:\\Sem 4\\java programs\\JAVAFX\\cross.gif"));
+        ImageView imageViewX = new ImageView(imageX);
+        VBox xBox = setProp(imageViewX);
+        return xBox;
+    }
+
+    public VBox createO() throws FileNotFoundException {
+        // put the address of circle gif.
+        Image imageO = new Image(new FileInputStream("D:\\Sem 4\\java programs\\JAVAFX\\circle.gif"));
+        ImageView imageViewO = new ImageView(imageO);
+        VBox oBox = setProp(imageViewO);
+        return oBox;
+    }
+
+    public VBox setProp(ImageView iv) {
+        iv.setFitHeight(50);
+        iv.setFitWidth(50);
+        iv.setPreserveRatio(true);
+        VBox vBox = new VBox();
+        vBox.getChildren().add(iv);
+        vBox.setStyle("-fx-border-color: orange");
+        return vBox;
+    }
+
     public static void main(String[] args) {
-        launch(args);
+        Application.launch(args);
     }
 }
 
 ```
 
-```
+![image](https://github.com/Code-Parth/OOPJ-College/assets/84669955/26ef155f-a6b1-4c8d-bab4-4158d31444c2)
 
-```
